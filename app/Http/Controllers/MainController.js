@@ -10,19 +10,24 @@ exports.connect = async (req, res) => {
       message: "Connection name is missing",
     })
   }
+  try {
+    const results = await venomService[force ? "makeConnection" : "getConnection"](connectionName)
+    console.log({ results });
+    if (results.status == "CONNECTED") {
+      return res.json({
+        status: "OK",
+        message: "Connected",
+      })
+    }
 
-  const results = await venomService[force ? "makeConnection" : "getConnection"](connectionName)
-
-  console.log({ results });
-
-  if (results.status == "CONNECTED") {
-    return res.json({
-      status: "OK",
-      message: "Connected",
-    })
+    return res.json(results)
+  }
+  catch (e) {
+    console.log(e.message)
+    return res.json(e)
   }
 
-  return res.json(results)
+
 }
 
 exports.renderQR = async (req, res) => {
