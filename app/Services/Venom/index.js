@@ -87,7 +87,11 @@ module.exports = new class {
       };
 
       const venomConfig = {
-        logQR: false
+        logQR: false,
+        headless: false,
+        puppeteerOptions: {
+          args: ["--no-sandbox"]
+        }
       }
 
       venom.create(session, catchQR, undefined, venomConfig)
