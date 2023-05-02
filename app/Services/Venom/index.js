@@ -87,7 +87,8 @@ module.exports = new class {
       };
 
       const venomConfig = {
-        logQR: false
+        logQR: false,
+        headless: false
       }
 
       venom.create(session, catchQR, undefined, venomConfig)
