@@ -107,20 +107,27 @@ module.exports = new class {
     })
   }
 
-  async sendMessage({ connectionName, number, message }) {
+  async sendMessage({ connectionName, number, message ,url}) {
     return new Promise( async (resolve, reject) => {
       const connection = await this.getConnection(connectionName)
 
       if (connection) {
         const client = connection.client
   
-        if (typeof number == 'undefined' || typeof message == 'undefined') {
+        if (typeof number == 'undefined' || typeof message == 'undefined' || typeof url == 'undefined') {
           reject('Missing Params');
         }
   
         try {
-          const response = await client.sendText(`${number}@c.us`, message)
-  
+          // const response = await client.sendText(`${number}@c.us`, message)
+
+          const response =  await client
+            .sendLinkPreview(
+              `${number}@c.us`,
+              url,
+              message
+            );
+          
           resolve(response)
         } catch (error) {
           reject(error)
