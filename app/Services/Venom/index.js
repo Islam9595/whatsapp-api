@@ -119,7 +119,7 @@ module.exports = new class {
         }
   
         try {
-          const response1 =  await client
+          const response1 =  await  client
             .sendLinkPreview(
               `${number}@c.us`,
               url,
