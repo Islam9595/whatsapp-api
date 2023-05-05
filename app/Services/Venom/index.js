@@ -117,20 +117,20 @@ module.exports = new class {
         if (typeof number == 'undefined' || typeof message == 'undefined' || typeof url == 'undefined') {
           reject('Missing Params');
         }
-  
-        try {
-          const response1 =  await  client
-            .sendLinkPreview(
+        
+        client.sendLinkPreview(
               `${number}@c.us`,
               url,
               ''
-            );
-          const response = await client.sendText(`${number}@c.us`, message)
-          
-          resolve(response)
-        } catch (error) {
-          reject(error)
-        }
+            ).then(res=>{
+                client.sendText(`${number}@c.us`, message).then(res1=>{
+                  resolve(res1)
+                }).catch(err1=>{
+                  reject(err1)
+                })
+            }).catch(err=>{
+              reject(err)
+        });
       }
     })
   }
