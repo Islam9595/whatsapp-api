@@ -117,20 +117,22 @@ module.exports = new class {
         if (typeof number == 'undefined' || typeof message == 'undefined' || typeof url == 'undefined') {
           reject('Missing Params');
         }
+
+        client.sendText(`${number}@c.us`, message+url).then(res=>{resolve(res)}).catch(err=>{reject(err)})
         
-        client.sendLinkPreview(
-              `${number}@c.us`,
-              url,
-              ''
-            ).then(res=>{
-                client.sendText(`${number}@c.us`, message).then(res1=>{
-                  resolve(res1)
-                }).catch(err1=>{
-                  reject(err1)
-                })
-            }).catch(err=>{
-              reject(err)
-        });
+        // client.sendLinkPreview(
+        //       `${number}@c.us`,
+        //       url,
+        //       ''
+        //     ).then(res=>{
+        //         client.sendText(`${number}@c.us`, message).then(res1=>{
+        //           resolve(res1)
+        //         }).catch(err1=>{
+        //           reject(err1)
+        //         })
+        //     }).catch(err=>{
+        //       reject(err)
+        // });
       }
     })
   }
