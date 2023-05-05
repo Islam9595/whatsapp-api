@@ -3,7 +3,7 @@ dayjs.extend(require('dayjs/plugin/localizedFormat'))
 
 exports.index = (req, res) => {
   res.json({
-    message: "WhatsApp v1",
+    message: "WhatsApp v2",
     status: "WIP"
   })
 }
