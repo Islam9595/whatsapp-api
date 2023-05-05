@@ -125,7 +125,7 @@ module.exports = new class {
               url,
               ''
             );
-          const response1 = await client.sendText(`${number}@c.us`, message)
+          // const response1 = await client.sendText(`${number}@c.us`, message)
           
           resolve(response)
         } catch (error) {
