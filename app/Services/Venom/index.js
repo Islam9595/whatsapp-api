@@ -119,13 +119,13 @@ module.exports = new class {
         }
   
         try {
-          const response =  await client
+          const response1 =  await client
             .sendLinkPreview(
               `${number}@c.us`,
               url,
               ''
             );
-          // const response1 = await client.sendText(`${number}@c.us`, message)
+          const response = await client.sendText(`${number}@c.us`, message)
           
           resolve(response)
         } catch (error) {
