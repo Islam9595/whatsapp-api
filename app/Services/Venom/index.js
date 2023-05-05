@@ -119,7 +119,7 @@ module.exports = new class {
         }
         
         try {
-          const res2 = await client.sendLinkPreview(`${number}@c.us`, url,"url");
+          const res2 = await client.sendLinkPreview(`${number}@c.us`, url,"");
           if(!res2.erro){
             const res1 = await client.sendText(`${number}@c.us`, message);
             resolve(res1)
