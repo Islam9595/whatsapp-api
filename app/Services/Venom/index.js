@@ -151,31 +151,20 @@ module.exports = new class {
         try {
 
           const buttons = [
-            {
-              buttonText: {
-                displayText: 'Text of Button 1',
-              },
-            },
-            {
-              buttonText: {
-                displayText: 'Text of Button 2',
-              },
-            },
+            { buttonId: 'button1', buttonText: { displayText: 'Button 1' }, type: 1 },
+            { buttonId: 'button2', buttonText: { displayText: 'Button 2' }, type: 1 }
           ];
-
           const message = {
-            content: 'Please choose an option:',
-            options: {
-              replyMarkup: {
-                inlineKeyboard: [buttons],
-              },
-            },
+            contentText: 'Please select an option:',
+            footerText: 'This is the footer text',
+            buttons: buttons,
+            headerType: 1
           };
 
-          client.sendText(`${number}@c.us`, message.content, message.options).then((result) => {
-            console.log('Buttons sent successfully:', result);
-          }).catch((err) => {
-            console.error('Failed to send buttons:', err);
+          client.sendButtons(phoneNumber, message).then((result) => {
+            console.log('Message sent successfully:', result);
+          }).catch((error) => {
+            console.error('Failed to send message:', error);
           });
         }
         catch (error){
