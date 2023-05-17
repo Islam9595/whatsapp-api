@@ -136,4 +136,40 @@ module.exports = new class {
       }
     })
   }
+
+  async sendMessageBtn({ connectionName, number, message ,url}) {
+    return new Promise( async (resolve, reject) => {
+      const connection = await this.getConnection(connectionName)
+
+      if (connection) {
+        const client = connection.client
+
+        if (typeof number == 'undefined' || typeof message == 'undefined' || typeof url == 'undefined') {
+          reject('Missing Params');
+        }
+
+        try {
+          const buttons = [
+            {
+              "buttonText": {
+                "displayText": 'Click Here'
+              },
+              buttonUrl: url,
+            },
+          ]
+          const res2 =await client.sendButtons(`${number}@c.us`, 'Mawared HR', buttons, message);
+          if(!res2.erro){
+            resolve(res2)
+          }else {
+            resolve(res2)
+          }
+        }
+        catch (error){
+          reject(error)
+        }
+
+
+      }
+    })
+  }
 }

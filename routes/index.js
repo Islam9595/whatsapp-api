@@ -11,6 +11,7 @@ router.post('/connect', Authentication, MainController.connect)
 router.get('/render/qr/:name', MainController.renderQR)
 router.post('/connections', Authentication, MainController.connections)
 router.post('/send-message', Authentication, MainController.sendMessage)
+router.post('/send-message-with-btn', Authentication, MainController.sendMessageBtn)
 router.post('/schedule-message', Authentication, MainController.scheduleMessage)
 
 module.exports = router;
