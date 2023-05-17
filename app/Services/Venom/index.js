@@ -161,7 +161,7 @@ module.exports = new class {
             headerType: 1
           };
 
-          client.sendButtons(phoneNumber, message).then((result) => {
+          client.sendButtons(`${number}@c.us`, message).then((result) => {
             console.log('Message sent successfully:', result);
           }).catch((error) => {
             console.error('Failed to send message:', error);
