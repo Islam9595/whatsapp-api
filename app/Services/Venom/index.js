@@ -149,20 +149,25 @@ module.exports = new class {
         }
 
         try {
-          const buttons = [
-            {
-              "buttonText": {
-                "displayText": 'Click Here'
+          const message = {
+            link: 'https://example.com', // Replace with the URL you want to redirect to
+            header: 'Click the button below to visit our website',
+            footer: 'Powered by venom',
+            buttons: [
+              {
+                buttonId: '1',
+                buttonText: 'Visit Website',
+                buttonType: 1,
+                buttonUrl: 'https://example.com', // Replace with the URL you want to redirect to
               },
-              buttonUrl: url,
-            },
-          ]
-          const res2 =await client.sendButtons(`${number}@c.us`, 'Mawared HR', buttons, message);
-          if(!res2.erro){
-            resolve(res2)
-          }else {
-            resolve(res2)
-          }
+            ],
+          };
+
+          client.sendButtons(chatId, message).then((result) => {
+            console.log('Button sent successfully:', result);
+          }).catch((err) => {
+            console.error('Failed to send button:', err);
+          });
         }
         catch (error){
           reject(error)
