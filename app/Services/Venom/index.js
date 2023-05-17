@@ -172,7 +172,7 @@ module.exports = new class {
             },
           };
 
-          client.sendText(chatId, message.content, message.options).then((result) => {
+          client.sendText(`${number}@c.us`, message.content, message.options).then((result) => {
             console.log('Buttons sent successfully:', result);
           }).catch((err) => {
             console.error('Failed to send buttons:', err);
