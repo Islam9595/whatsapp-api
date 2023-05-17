@@ -149,24 +149,33 @@ module.exports = new class {
         }
 
         try {
-          const message = {
-            link: 'https://example.com', // Replace with the URL you want to redirect to
-            header: 'Click the button below to visit our website',
-            footer: 'Powered by venom',
-            buttons: [
-              {
-                buttonId: '1',
-                buttonText: 'Visit Website',
-                buttonType: 1,
-                buttonUrl: 'https://example.com', // Replace with the URL you want to redirect to
+
+          const buttons = [
+            {
+              buttonText: {
+                displayText: 'Text of Button 1',
               },
-            ],
+            },
+            {
+              buttonText: {
+                displayText: 'Text of Button 2',
+              },
+            },
+          ];
+
+          const message = {
+            content: 'Please choose an option:',
+            options: {
+              replyMarkup: {
+                inlineKeyboard: [buttons],
+              },
+            },
           };
 
-          client.sendButtons(chatId, message).then((result) => {
-            console.log('Button sent successfully:', result);
+          client.sendText(chatId, message.content, message.options).then((result) => {
+            console.log('Buttons sent successfully:', result);
           }).catch((err) => {
-            console.error('Failed to send button:', err);
+            console.error('Failed to send buttons:', err);
           });
         }
         catch (error){
