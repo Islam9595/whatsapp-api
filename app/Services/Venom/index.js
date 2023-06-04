@@ -119,12 +119,12 @@ module.exports = new class {
         }
         
         try {
-          const res2 = await client.sendLinkPreview(`${number}@c.us`, url,"");
-          if(!res2.erro){
-            const res1 = await client.sendText(`${number}@c.us`, message);
-            resolve(res1)
-          }else {
+          const res1 = await client.sendText(`${number}@c.us`, message);
+          if(!res1.erro){
+            const res2 = await client.sendLinkPreview(`${number}@c.us`, url,"");
             resolve(res2)
+          }else {
+            resolve(res1)
           }
         }
         catch (error){
