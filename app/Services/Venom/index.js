@@ -120,7 +120,7 @@ module.exports = new class {
         
         try {
           const res1 = await client.sendText(`${number}@c.us`, message);
-          if(!res1.hasOwnProperty('erro')){
+          if(!res1.erro){
             const res2 = await client.sendLinkPreview(`${number}@c.us`, url,"");
             resolve(res2)
           }else {
