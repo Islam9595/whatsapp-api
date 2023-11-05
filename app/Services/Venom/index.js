@@ -108,6 +108,7 @@ module.exports = new class {
   }
 
   async sendMessage({ connectionName, number, message ,url}) {
+    return null;
     return new Promise( async (resolve, reject) => {
       const connection = await this.getConnection(connectionName)
 
