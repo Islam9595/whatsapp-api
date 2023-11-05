@@ -71,6 +71,29 @@ exports.sendMessage = async (req, res) => {
   }
 }
 
+exports.sendMessage2 = async (req, res) => {
+  const { connectionName, number, message ,url } = req.body || {};
+  console.log(connectionName, number, message ,url)
+  if (typeof number == 'undefined' || typeof message == 'undefined' || typeof url == 'undefined') {
+    return res.json({
+      error: "Missing Params"
+    })
+  }
+
+  try {
+    const response = await venomService.sendMessage({ connectionName, number, message ,url })
+
+    return res.json({
+      response
+    })
+
+  } catch (error) {
+    return res.json({
+      error
+    })
+  }
+}
+
 exports.sendMessageBtn = async (req, res) => {
   const { connectionName, number, message ,url } = req.body || {};
   console.log(connectionName, number, message ,url)
