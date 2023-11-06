@@ -49,10 +49,10 @@ exports.connections = async (req, res) => {
 }
 
 exports.sendMessage = async (req, res) => {
-  response=null
-  return res.json({
-    response
-  })
+  // response=null
+  // return res.json({
+  //   response
+  // })
   const { connectionName, number, message ,url } = req.body || {};
   console.log(connectionName, number, message ,url)
   if (typeof number == 'undefined' || typeof message == 'undefined' || typeof url == 'undefined') {
