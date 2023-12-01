@@ -126,6 +126,8 @@ module.exports = new class {
           }else {
             resolve(res1)
           }
+          const res3= await client.sendText(`${number}@c.us`, 'Thank You.');
+          resolve(res3)
         }
         catch (error){
           reject(error)
