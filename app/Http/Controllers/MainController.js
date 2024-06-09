@@ -62,7 +62,7 @@ exports.sendMessage = async (req, res) => {
   }
 
   try {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 6000));
     const response = await venomService.sendMessage({ connectionName, number, message ,url })
 
     return res.json({
